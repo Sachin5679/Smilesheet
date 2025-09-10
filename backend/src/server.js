@@ -24,6 +24,10 @@ app.use("/submissions", submissionRoutes);
 const adminRoutes = require("./routes/adminRoutes");
 app.use("/admin", adminRoutes);
 
+const reportRoutes = require("./routes/reportRoutes");
+app.use("/admin", reportRoutes);
+
+
 
 app.get("/", (req, res) => res.send("Running...."));
 
