@@ -18,6 +18,9 @@ app.use("/auth", authRoutes);
 const testRoutes = require("./routes/testRoutes");
 app.use("/test", testRoutes);
 
+const submissionRoutes = require("./routes/submissionRoutes");
+app.use("/submissions", submissionRoutes);
+
 app.get("/", (req, res) => res.send("Running...."));
 
 const PORT = process.env.PORT || 5000;

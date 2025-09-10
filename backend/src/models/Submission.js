@@ -5,13 +5,26 @@ const submissionSchema = new mongoose.Schema({
   patientId: { type: String, required: true },
   email: { type: String, required: true },
   note: { type: String },
-  imageUrl: { type: String, required: true },
-  annotatedImageUrl: { type: String },
-  annotationJson: { type: Object },
-  reportUrl: { type: String },
-  status: { type: String, enum: ["uploaded", "annotated", "reported"], default: "uploaded" },
+
+  originalImageUrl: { type: String, required: true }, 
+  annotatedImageUrl: { type: String }, 
+  annotationJson: { type: Object }, 
+
+  reportUrl: { type: String }, 
+
+  status: {
+    type: String,
+    enum: ["uploaded", "annotated", "reported"],
+    default: "uploaded",
+  },
+
   createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date }
+  updatedAt: { type: Date, default: Date.now },
+});
+
+submissionSchema.pre("save", function (next) {
+  this.updatedAt = Date.now();
+  next();
 });
 
 module.exports = mongoose.model("Submission", submissionSchema);
