@@ -21,6 +21,10 @@ app.use("/test", testRoutes);
 const submissionRoutes = require("./routes/submissionRoutes");
 app.use("/submissions", submissionRoutes);
 
+const adminRoutes = require("./routes/adminRoutes");
+app.use("/admin", adminRoutes);
+
+
 app.get("/", (req, res) => res.send("Running...."));
 
 const PORT = process.env.PORT || 5000;
