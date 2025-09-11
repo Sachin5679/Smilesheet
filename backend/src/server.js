@@ -27,6 +27,8 @@ app.use("/admin", adminRoutes);
 const reportRoutes = require("./routes/reportRoutes");
 app.use("/admin", reportRoutes);
 
+const patientRoutes = require("./routes/patientRoutes");
+app.use("/patient", patientRoutes);
 
 
 app.get("/", (req, res) => res.send("Running...."));
