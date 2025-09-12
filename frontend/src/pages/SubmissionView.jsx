@@ -157,7 +157,6 @@ export default function SubmissionView({ admin = false }) {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
         <div>
           <p className="font-semibold text-gray-700 mb-1"><b>Patient Name:</b> <span className="font-normal">{submission.patient?.name}</span></p>
-          <p className="text-sm text-gray-500 mb-1"><b>Patient ID:</b> {submission.patientId}</p>
           <p className="text-sm text-gray-500 mb-1"><b>Email:</b> {submission.email}</p>
           <p className="text-sm text-gray-500 mb-1"><b>Status:</b> {submission.status}</p>
           <p className="text-sm text-gray-500 mb-1"><b>Note:</b> {submission.note}</p>
