@@ -10,17 +10,17 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">All Submissions</h1>
-      <div className="space-y-3">
+    <div className="p-8 max-w-4xl mx-auto bg-white rounded-2xl shadow-lg mt-8 border border-gray-100">
+      <h1 className="text-3xl font-extrabold mb-6 text-blue-700 tracking-tight">All Submissions</h1>
+      <div className="space-y-4">
         {submissions.map(s => (
-          <div key={s._id} className="border p-3 rounded flex justify-between items-center">
+          <div key={s._id} className="border border-gray-200 p-5 rounded-xl flex justify-between items-center bg-gray-50 hover:shadow transition-shadow">
             <div>
-              <p><b>Patient:</b> {s.patient?.name}</p>
-              <p><b>Status:</b> {s.status}</p>
-              <p><b>Note:</b> {s.note}</p>
+              <p className="font-semibold text-gray-700"><b>Patient:</b> <span className="font-normal">{s.patient?.name}</span></p>
+              <p className="text-sm text-gray-500"><b>Status:</b> {s.status}</p>
+              <p className="text-sm text-gray-500"><b>Note:</b> {s.note}</p>
             </div>
-            <Link to={`/admin/submissions/${s._id}`} className="bg-blue-500 text-white px-3 py-1 rounded">View</Link>
+            <Link to={`/admin/submissions/${s._id}`} className="bg-blue-600 text-white px-4 py-2 rounded-lg font-semibold shadow hover:bg-blue-700 transition-colors">View</Link>
           </div>
         ))}
       </div>

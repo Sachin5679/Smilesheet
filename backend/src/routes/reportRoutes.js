@@ -27,6 +27,12 @@ router.post("/submissions/:id/report", protect, authorize("admin"), async (req, 
       annotatedImgBuffer = s3Object.Body;
     }
 
+    const ANNOTATION_TYPES = [
+      { type: "Caries", color: "#e11d48" },
+      { type: "Stains", color: "#f59e42" },
+      { type: "Scaling", color: "#2563eb" },
+    ];
+
     const doc = new PDFDocument();
     let buffers = [];
     doc.on("data", buffers.push.bind(buffers));
@@ -46,17 +52,31 @@ router.post("/submissions/:id/report", protect, authorize("admin"), async (req, 
     doc.text(`Uploaded: ${submission.createdAt.toLocaleString()}`);
     doc.moveDown();
 
-    if (originalImgBuffer) {
-      doc.text("Original Image:");
-      doc.image(originalImgBuffer, { fit: [400, 300], align: "center" });
-      doc.moveDown();
-    } else doc.text("Original image not available.");
 
     if (annotatedImgBuffer) {
-      doc.text("Annotated Image:");
+      doc.text("Image:");
       doc.image(annotatedImgBuffer, { fit: [400, 300], align: "center" });
       doc.moveDown();
     } else doc.text("Annotated image not available.");
+
+    doc.moveDown(2);
+    doc.fontSize(14).fillColor('#22223b').text("Annotation Key", { underline: true, align: 'left' });
+    doc.moveDown(0.5);
+    const keyStartX = doc.x;
+    let keyY = doc.y;
+    const boxSize = 16;
+    const rowSpacing = 10;
+    ANNOTATION_TYPES.forEach((t, idx) => {
+      doc.rect(keyStartX, keyY, boxSize, boxSize).fillAndStroke(t.color, t.color).stroke();
+      doc.fillColor("black").fontSize(12).text(
+        t.type,
+        keyStartX + boxSize + 8,
+        keyY + 2,
+        { continued: false }
+      );
+      keyY += boxSize + rowSpacing;
+    });
+    doc.moveDown(2);
 
     doc.end();
     await pdfEndPromise;

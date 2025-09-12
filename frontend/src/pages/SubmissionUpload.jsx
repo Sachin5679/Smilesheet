@@ -29,12 +29,12 @@ export default function SubmissionUpload() {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10">
-      <h2 className="text-xl font-bold mb-4">Upload Submission</h2>
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-        <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} />
-        <textarea placeholder="Notes" value={note} onChange={(e) => setNote(e.target.value)} className="border p-2 rounded"/>
-        <button className="bg-blue-500 text-white py-2 rounded">Upload</button>
+    <div className="max-w-md mx-auto mt-12 bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
+      <h2 className="text-2xl font-extrabold mb-6 text-blue-700 text-center tracking-tight">Upload Submission</h2>
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+        <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} className="border border-gray-200 rounded-lg bg-gray-50 p-2" />
+        <textarea placeholder="Notes" value={note} onChange={(e) => setNote(e.target.value)} className="border border-gray-300 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200"/>
+        <button className="bg-blue-600 text-white py-3 rounded-lg font-semibold shadow hover:bg-blue-700 transition-colors mt-2">Upload</button>
       </form>
     </div>
   );
