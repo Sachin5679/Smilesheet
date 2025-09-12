@@ -18,7 +18,7 @@ const protect = async (req, res, next) => {
   }
 };
 
-// RBAC
+// Role-based access
 const authorize = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
