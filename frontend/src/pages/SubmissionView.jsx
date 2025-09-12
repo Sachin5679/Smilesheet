@@ -41,7 +41,7 @@ export default function SubmissionView({ admin = false }) {
   }
 
   const proxyImageUrl = submission?.originalImageUrl ?
-    `http://localhost:3003/proxy-image?key=${encodeURIComponent(getS3KeyFromUrl(submission.originalImageUrl))}` :
+    `https://oral-vis-task.vercel.app/proxy-image?key=${encodeURIComponent(getS3KeyFromUrl(submission.originalImageUrl))}` :
     "";
 
   const [image, imageStatus] = useImage(proxyImageUrl, "anonymous");
