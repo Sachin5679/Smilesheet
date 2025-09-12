@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://oral-vis-task.vercel.app/", 
+  baseURL: "https://oral-vis-task.vercel.app", 
   withCredentials: true, 
 });
 

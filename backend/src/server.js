@@ -14,7 +14,7 @@ app.use(cookieParser());
 const cors = require("cors");
 
 app.use(cors({
-  origin: "https://oral-vis-task-frontend.vercel.app/",  
+  origin: "https://oral-vis-task-frontend.vercel.app",  
   credentials: true,               
 }));
 
