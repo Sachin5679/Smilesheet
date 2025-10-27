@@ -1,4 +1,4 @@
-# OralVis Task
+# Smilesheet
 
 An application for dental submissions and report management.  
 - **Patients** can upload teeth photos, view submissions, and download PDF reports.  
